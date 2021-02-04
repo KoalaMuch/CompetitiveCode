@@ -1,0 +1,2782 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 FINAL//EN">
+
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html">
+<META NAME="Generator" CONTENT="NetObjects Fusion 4.0 for Windows">
+<TITLE>Update Address</TITLE>
+<link rel="stylesheet" href="/cu/general/PersonalInformation/inquiry.css" type="text/css">
+<script type='text/javascript' src='/cu/general/CheckGeneral.js'></script>
+<script type='text/javascript' language="JavaScript1.2">
+	var status = "";
+   
+   
+   
+   
+    function verifyAttribuate()
+    {
+	  
+	    
+	   if  (document.ProfileForm.submitType.value == 'U') 
+	     {   
+	     
+	     if  (document.ProfileForm.IdCard.value.length < 13 && document.ProfileForm.Nation.value == '01') 
+	     {
+	     	window.alert(" กรุณาบันทึกเลขประจำตัวประชาชน ");
+	     	document.ProfileForm.IdCard.focus()
+	     	return false;
+	     }
+	     if  (document.ProfileForm.IdCard.value.length < 1) 
+	     {
+	     	window.alert(" กรุณาบันทึกเลขที่หนังสือเิดินทาง ");
+	     	document.ProfileForm.IdCard.focus()
+	     	return false;
+	     }
+	     if  (document.ProfileForm.BYear.value.length < 4 ) 
+	     {
+	     	window.alert(" กรุณาบันทึกปีให้ถูกต้อง ");
+	     	document.ProfileForm.BYear.focus()
+	     	return false;
+	     }
+	     
+	     if  (document.ProfileForm.Nation.value != '01' && document.ProfileForm.IYear.value.length < 4 ) 
+	     {
+	     	window.alert(" กรุณาบันทึกปีให้ถูกต้อง ");
+	     	document.ProfileForm.IYear.focus()
+	     	return false;
+	     }
+	     
+	     if  (document.ProfileForm.Nation.value != '01' && document.ProfileForm.EYear.value.length < 4 ) 
+	     {
+	     	window.alert(" กรุณาบันทึกปีให้ถูกต้อง ");
+	     	document.ProfileForm.EYear.focus()
+	     	return false;
+	     }
+	     
+	     if  (document.ProfileForm.Nation.value != '01' && !checkIDate()) 
+	     {
+	     	window.alert(" กรุณาวันที่ให้ถูกต้อง ");
+	     	document.ProfileForm.IDay.focus()
+	     	return false;
+	     }
+	     
+	     if  (document.ProfileForm.Nation.value != '01' && !checkEDate()) 
+	     {
+	     	window.alert(" กรุณาวันที่ให้ถูกต้อง ");
+	     	document.ProfileForm.EDay.focus()
+	     	return false;
+	     }
+	     
+	     if  (document.ProfileForm.Nation.value != '01' && !checkIEDate()) 
+	     {
+	     	window.alert(" กรุณาวันที่ให้ถูกต้อง ");
+	     	document.ProfileForm.EDay.focus()
+	     	return false;
+	     }
+	     
+	    	     
+	      if  (document.ProfileForm.MobilePhoneNo.value.length < 10 && document.ProfileForm.Nation.value == '01') 
+	     {
+	     	window.alert(" กรุณาบันทึกเบอร์โทรศัพท์มือถือให้ถูกต้อง ");
+	     	document.ProfileForm.MobilePhoneNo.focus()
+	     	return false;
+	     }
+	     
+	     if  (!checkValidDate()) 
+	     {
+	     	window.alert(" กรุณาวันที่ให้ถูกต้อง ");
+	     	document.ProfileForm.BDay.focus()
+	     	return false;
+	     }
+	     
+	     if  (document.ProfileForm.FatherName.value.length < 1) 
+	     {
+	     	window.alert(" กรุณาบันทึกชื่อบิดา ");
+	     	document.ProfileForm.FatherName.focus()
+	     	return false;
+	     }
+	     
+	      if  (document.ProfileForm.FatherSurName.value.length < 1) 
+	     {
+	     	window.alert(" กรุณาบันทึกนามสกุลบิดา ");
+	     	document.ProfileForm.FatherSurName.focus()
+	     	return false;
+	     }
+	     
+	      if  (document.ProfileForm.Nation.value == '01' && document.ProfileForm.IdCardFather.value.length < 13  ) 
+	     {
+	     	window.alert(" กรุณาบันทึกเลขประจำตัวประชาชนบิดา ");
+	     	document.ProfileForm.IdCardFather.focus()
+	     	return false;
+	     }
+	    
+	     if  (document.ProfileForm.ProfileStatus.value != 'S' && document.ProfileForm.MatherName.value.length < 1) 
+	     {
+	     	window.alert(" กรุณาบันทึกชื่อมารดา ");
+	     	document.ProfileForm.MatherName.focus()
+	     	return false;
+	     }
+	     if  (document.ProfileForm.ProfileStatus.value != 'S' && document.ProfileForm.MatherSurName.value.length < 1) 
+	     {
+	     	window.alert(" กรุณาบันทึกนามสกุลมารดา ");
+	     	document.ProfileForm.MatherSurName.focus()
+	     	return false;
+	     } 
+	      if  (document.ProfileForm.Nation.value == '01' && document.ProfileForm.IdCardMother.value.length < 13 ) 
+	     {
+	     	window.alert(" กรุณาบันทึกเลขประจำตัวประชาชนมารดา ");
+	     	document.ProfileForm.IdCardMother.focus()
+	     	return false;
+	     }
+	     
+         if  (document.ProfileForm.AdmType.value == 'B') 
+	     {
+	     	/*guardianCheck();*/
+	     	guarantorCheck();
+	     	guardianRelationCheck();
+	     	if  (document.ProfileForm.GuardianName.value.length < 1) 
+		       {
+		     	window.alert(" กรุณาบันทึกชื่อผู้ปกครอง ");
+		     	document.ProfileForm.GuardianName.focus()
+		     	return false;
+		     }
+		      if  (document.ProfileForm.GuardianSurName.value.length < 1) 
+		     {
+		     	window.alert(" กรุณาบันทึกนามสกุลผู้ปกครอง ");
+		     	document.ProfileForm.GuardianSurName.focus()
+		     	return false;
+		     }
+		      if  (document.ProfileForm.Nation.value == '01' && document.ProfileForm.IdCardGuardian.value.length < 13) 
+	        {
+	     	    window.alert(" กรุณาบันทึกเลขประจำตัวประชาชนผู้ปกครอง ");
+	     	    document.ProfileForm.IdCardGuardianr.focus()
+	     	    return false;
+	        }
+		     
+		     
+		     if  (document.ProfileForm.GuarantorName.value.length < 1) 
+		       {
+		     	window.alert(" กรุณาบันทึกชื่อผู้ค้ำประกัน ");
+		     	document.ProfileForm.GuarantorName.focus()
+		     	return false;
+		     }
+		      if  (document.ProfileForm.GuarantorSurName.value.length < 1) 
+		     {
+		     	window.alert(" กรุณาบันทึกนามสกุลผู้ค้ำประกัน ");
+		     	document.ProfileForm.GuarantorSurName.focus()
+		     	return false;
+		     }
+		      
+	      }  
+	      
+	     }   
+	     
+		document.ProfileForm.Province.disabled=false;
+		
+	    return true;
+    }
+    
+    function setPrint()
+    { 
+      document.ProfileForm.printStatus.value = "Y";
+      document.ProfileForm.action = "/servlet/com.dtm.chula.admission.servlet.StudentEntryProfileSearchServlet" ;
+      return true;
+    
+    }
+		
+    
+    function checkValidDate()
+    {   
+    	var iyear = document.ProfileForm.BYear.value;
+    	var imon = document.ProfileForm.BMon.value;
+    	var iday  = document.ProfileForm.BDay.value;
+    	if (isblank(imon)) 
+    	   return true;
+    	else if (imon.length < 2) 
+    	   imon = '0'+imon;	 	
+    	if (isblank(iday)) 
+    	   return true;
+    	else if (iday.length < 2)
+    	   iday = '0'+iday;	
+       if (iyear > 2400) 
+	  	  iyear = iyear - 543;
+       var test = new Date(iyear,imon-1,iday);
+       if (iyear == y2k(test.getYear()) && 
+          (imon-1 == test.getMonth()) && 
+          (iday == test.getDate())) 
+       {
+         return true;
+       } else {
+         return false;
+       }
+    }
+    
+    function checkIDate()
+    {   
+    	var iyear = document.ProfileForm.IYear.value;
+    	var imon = document.ProfileForm.IMon.value;
+    	var iday  = document.ProfileForm.IDay.value;
+    	if (isblank(imon)) 
+    	   return true;
+    	else if (imon.length < 2) 
+    	   imon = '0'+imon;	 	
+    	if (isblank(iday)) 
+    	   return true;
+    	else if (iday.length < 2)
+    	   iday = '0'+iday;	
+       if (iyear > 2400) 
+	  	  iyear = iyear - 543;
+       var test = new Date(iyear,imon-1,iday);
+       if (iyear == y2k(test.getYear()) && 
+          (imon-1 == test.getMonth()) && 
+          (iday == test.getDate())) 
+       {
+         return true;
+       } else {
+         return false;
+       }
+    }
+    
+     function checkEDate()
+    {   
+    	var iyear = document.ProfileForm.EYear.value;
+    	var imon = document.ProfileForm.EMon.value;
+    	var iday  = document.ProfileForm.EDay.value;
+    	if (isblank(imon)) 
+    	   return true;
+    	else if (imon.length < 2) 
+    	   imon = '0'+imon;	 	
+    	if (isblank(iday)) 
+    	   return true;
+    	else if (iday.length < 2)
+    	   iday = '0'+iday;	
+       if (iyear > 2400) 
+	  	  iyear = iyear - 543;
+       var test = new Date(iyear,imon-1,iday);
+       if (iyear == y2k(test.getYear()) && 
+          (imon-1 == test.getMonth()) && 
+          (iday == test.getDate())) 
+       {
+         return true;
+       } else {
+         return false;
+       }
+    }
+    
+      function checkIEDate()
+    {   
+    	var iyear = document.ProfileForm.IYear.value;
+    	var imon = document.ProfileForm.IMon.value;
+    	var iday  = document.ProfileForm.IDay.value;
+    	if (imon.length < 2)   imon = '0'+imon;
+    	if (iday.length < 2)   iday = '0'+iday;	
+    	var idate = iyear.concat(imon) ;
+    	idate = idate.concat(iday) ;
+    	var eyear = document.ProfileForm.EYear.value;
+    	var emon = document.ProfileForm.EMon.value;
+    	var eday  = document.ProfileForm.EDay.value;
+    	if (emon.length < 2)   emon = '0'+emon;
+    	if (eday.length < 2)   eday = '0'+eday;	
+    	var edate = eyear.concat(emon) ;
+    	edate = edate.concat(eday) ;
+    	if (idate >= edate){
+    	    return false;
+        } else {
+            return true;
+        }
+    }
+    
+    function validCountry() 
+    {
+    	if 	(document.ProfileForm.Country.value != "01") 
+    	{
+    		document.ProfileForm.Province.value = "99";
+			document.ProfileForm.Province.disabled=true;
+			
+    	} else {
+			document.ProfileForm.Province.disabled=false;
+			if 	(document.ProfileForm.Province.value == "") 
+    	     {document.ProfileForm.Province.value = "10";}
+		}
+    }
+    
+    function validProvince() 
+    {
+    	if 	(document.ProfileForm.Province.value == "99" &&
+    	     document.ProfileForm.Country.value == "01") 
+    	{
+	     	window.alert(" กรุณาบันทึกจังหวัดให้ถูกต้อง ");
+    		document.ProfileForm.Province.value = "10";
+    		document.ProfileForm.Province.focus();
+	    } 	
+    }
+    
+    function guardianRelationCheck() 
+    {
+    	if 	(document.ProfileForm.GuardianRelation.value == "1") 
+    	{
+    	   document.ProfileForm.GuardianName.value = document.ProfileForm.FatherName.value ;
+           document.ProfileForm.GuardianSurName.value = document.ProfileForm.FatherSurName.value ;
+           if  (document.ProfileForm.Nation.value == '01') {
+                document.ProfileForm.IdCardGuardian.value = document.ProfileForm.IdCardFather.value ; 
+           }
+           document.ProfileForm.GuardianName.focus();
+	     	
+	    } else	if 	(document.ProfileForm.GuardianRelation.value == "2") 
+    	{
+	       document.ProfileForm.GuardianName.value = document.ProfileForm.MatherName.value ;
+           document.ProfileForm.GuardianSurName.value = document.ProfileForm.MatherSurName.value ;
+           if  (document.ProfileForm.Nation.value == '01') {
+                document.ProfileForm.IdCardGuardian.value = document.ProfileForm.IdCardMother.value ; 
+           }
+           document.ProfileForm.GuardianName.focus();
+	    } 
+    }
+    
+     function otherCheck()
+    {
+       if 	(document.ProfileForm.Guardian[2].checked) 
+             {
+              document.ProfileForm.GuardianName.value = ""; 
+              document.ProfileForm.GuardianSurName.value = ""; 
+              document.ProfileForm.GuardianName.focus();
+             }
+             
+       if 	(document.ProfileForm.Guarantor[3].checked)
+            {
+              document.ProfileForm.GuarantorName.value = "";
+              document.ProfileForm.GuarantorSurName.value = "";
+              document.ProfileForm.GuarantorName.focus();
+            }
+       
+    }
+    
+    function guardianCheck()
+    {
+       if 	(document.ProfileForm.Guardian[0].checked) 
+            {
+              document.ProfileForm.GuardianName.value = document.ProfileForm.FatherName.value ;
+              document.ProfileForm.GuardianSurName.value = document.ProfileForm.FatherSurName.value ;
+            }
+       else if 	(document.ProfileForm.Guardian[1].checked) 
+            {
+              document.ProfileForm.GuardianName.value = document.ProfileForm.MatherName.value ;
+              document.ProfileForm.GuardianSurName.value = document.ProfileForm.MatherSurName.value ;
+            }
+      
+    }
+    
+    function guarantorCheck()
+    {
+       if 	(document.ProfileForm.Guarantor[0].checked) 
+            {
+              document.ProfileForm.GuarantorName.value = document.ProfileForm.FatherName.value ;
+              document.ProfileForm.GuarantorSurName.value = document.ProfileForm.FatherSurName.value ;
+            }
+       else if 	(document.ProfileForm.Guarantor[1].checked) 
+            {
+              document.ProfileForm.GuarantorName.value = document.ProfileForm.MatherName.value ;
+              document.ProfileForm.GuarantorSurName.value = document.ProfileForm.MatherSurName.value ;
+            }
+       else if 	(document.ProfileForm.Guarantor[2].checked) 
+            {
+              document.ProfileForm.GuarantorName.value = document.ProfileForm.GuardianName.value ;
+              document.ProfileForm.GuarantorSurName.value = document.ProfileForm.GuardianSurName.value ;
+            }
+      
+    }
+</script>
+</HEAD>
+<BODY BGCOLOR="#ffcccc" TEXT="#000000">
+
+
+
+
+
+
+<FORM name="ProfileForm" action="/servlet/com.dtm.chula.admission.servlet.StudentEntryProfileServlet" method="post" onSubmit="return verifyAttribuate()">
+  <TABLE BORDER=0 CELLSPACING=1 CELLPADDING=1 WIDTH=100%>
+    <TR VALIGN=TOP ALIGN=LEFT>
+      <TD COLSPAN=2></TD>
+      <TD WIDTH=662 COLSPAN=5>
+        <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0>
+          <TR VALIGN=TOP ALIGN=LEFT>
+            <TD HEIGHT=13 width="7"><IMG SRC="/cu/general/image/clearpixel.gif" WIDTH=9 HEIGHT=1 BORDER=0></TD>
+            <TD width="509"></TD>
+          </TR>
+          <TR VALIGN=TOP ALIGN=LEFT>
+            <TD width="7"></TD>
+            <TD width="509">
+              <TABLE ID="Table40" BORDER=0 CELLSPACING=1 CELLPADDING=1>
+                <TR>
+					<TD COLSPAN=4 >
+					<TABLE ID="Table40" BORDER=0 CELLSPACING=0 CELLPADDING=0>
+						<TR>
+							<TD>เลขประจำตัวนิสิต&nbsp;&nbsp;&nbsp;</TD>
+							<TD class="fldDisplay">633 20226 21</TD>
+						</TR>
+					</TABLE>
+					</TD>
+					<TD width="71"></TD>
+                  <TD width="88">เลขที่นั่งสอบ</TD>
+                  <TD class="fldDisplay" width="136">21000027  </TD>
+                </TR>
+                <TR>
+						<TD COLSPAN=7 >
+						<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0>
+							<TR>
+								<TD HEIGHT=30 width="108">ชื่อ - นามสกุล&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+								<TD class="fldDisplay" width="384">นายธีรุตม์  สีเขียว</TD>
+							</TR>
+							<TR>
+								<TD width="108">&nbsp;</TD>
+								<TD class="fldDisplay" width="384">Mr.   </TD>
+							</TR>
+						</TABLE>
+						</TD>
+						<TD></TD>
+                </TR>
+                <TR>
+                  <TD COLSPAN=7>&nbsp;</TD>
+                  <TD></TD>
+                </TR>
+	            </TABLE>
+            </TD>
+      	  </TR>
+	  		</TABLE>
+			</TD>
+      <TD></TD>
+    </TR>
+    <TR VALIGN=TOP ALIGN=LEFT>
+      <TD COLSPAN=2 HEIGHT=164></TD>
+      <TD COLSPAN=5>
+        <TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0 >
+          <TR VALIGN=TOP ALIGN=LEFT>
+            <TD>
+              <TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0>
+                <TR VALIGN=TOP ALIGN=LEFT>
+                  <TD>
+                    <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0>
+                      <TR VALIGN=TOP ALIGN=LEFT>
+                        <TD WIDTH=13 HEIGHT=13><IMG SRC="/cu/general/image/clearpixel.gif" WIDTH=13 HEIGHT=1 BORDER=0></TD>
+                        <TD WIDTH=300><IMG SRC="/cu/general/image/clearpixel.gif" WIDTH=300 HEIGHT=1 BORDER=0></TD>
+                      </TR>
+                      <TR VALIGN=TOP ALIGN=LEFT>
+                        <TD></TD>
+                        <TD>ประวัติส่วนตัว</TD>
+                      </TR>
+                    </TABLE>
+                  </TD>
+                </TR>
+		          </TABLE>
+              <TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0>
+                <TR VALIGN=TOP ALIGN=LEFT>
+                  <TD WIDTH=15></TD>
+                  <TD>
+                    <TABLE BGCOLOR="#ffcccc" BORDER=3 CELLSPACING=0 CELLPADDING=0>
+                      <TR VALIGN=TOP ALIGN=LEFT>
+                        <TD >
+                          <TABLE ID="Table36" BORDER=0 CELLSPACING=1 CELLPADDING=1 WIDTH=750>
+                            <TR>
+                              <TD COLSPAN=5 HEIGHT=15></TD>
+                            </TR>
+                            <TR>
+                              <TD WIDTH=10></TD>
+                              <TD WIDTH=135><font id="cardlabel">เลขประจำตัวประชาชน</font></TD>
+                              <TD COLSPAN=3 class="fldInput">
+									<INPUT TYPE="TEXT" NAME="IdCard" VALUE="1200901315717" SIZE="13" MAXLENGTH="13">
+								</TD>
+                            </TR>
+                             
+                            <TR>
+                              <TD WIDTH=10></TD>
+                              <TD WIDTH=135>วัน เดือน ปี เกิด</TD>
+                              <TD COLSPAN=3 class="fldInput">
+										<INPUT TYPE="TEXT" NAME="BDay"   onkeyup="isDay(this)"    VALUE="26" SIZE="2" MAXLENGTH="2">/
+										<INPUT TYPE="TEXT" NAME="BMon"  onkeyup="isMonth(this)" VALUE="03" SIZE="2" MAXLENGTH="2">/
+										<INPUT TYPE="TEXT" NAME="BYear"  onkeyup="isYear(this)"   VALUE="2545" SIZE="4" MAXLENGTH="4">
+									</TD>
+                            </TR>
+	                          <TR>
+                              <TD WIDTH=10></TD>
+                              <TD WIDTH=135>ประเทศที่เกิด</TD>
+                              <TD class="fldInput">
+								<select  name="Country"  onchange="validCountry()">
+								
+									
+									
+									<OPTION VALUE="36">กรีซ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="23">กัมพูชา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="56">กานา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="06">คานาดา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="76">เครือรัฐเปอร์โตริโก</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="21">แคเมอร์รูน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="90">ชิลี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="41">ซาอุดิอารเบีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="135">เซาท์ซูดาน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="03">ญี่ปุ่น</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="30">เดนมาร์ค</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="99">ต่างประเทศ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="28">ตุรกี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="25">ไต้หวัน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="01" selected="selected">ไทย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="31">นอร์เวย์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="22">นิวซีแลนด์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="16">เนเธอร์แลนด์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="46">บรูไนดารุสซาลาม</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="49">บอตสวานา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="66">บอสเนียและเฮอร์เซโกวีนา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="144">บาร์เบโดส</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="48">บาห์เรน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="42">เบลเยี่ยม</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="70">เบลีซ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="24">เบอร์นิน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="58">ปากีสถาน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="107">ปาปัวนิวกินี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="63">ปาเลสไตน์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="20">ฝรั่งเศส</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="26">ฟินแลนด์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="32">มองโกเลีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="62">มัลดีฟส์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="43">มาเลเซีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="00">ไม่ระบุประเทศ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="57">ยูโกสลาเวีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="37">เยอรมนี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="73">รัฐคูเวต</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="91">รัฐสุลต่านโอมาน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="35">รัฐอิสราเอล</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="81">รัฐอิสลามอัฟกานิสถาน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="87">ราชรัฐลักเซมเบิร์ก</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="141">ราชอาณาจักรตองกา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="53">ราชอาณาจักรภูฏาน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="77">ราชอาณาจักรโมร็อกโก</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="116">ราชอาณาจักรสวาซิแลนด์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="131">ราชอาณาจักรฮัชไมต์จอร์แดน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="71">โรมาเนีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="85">ลัตเวีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="89">ลิเบีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="59">เลบานอน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="17">ศรีลังกา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="47">สกอตแลนด์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="18">สเปน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="19">สวิตเซอร์แลนด์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="44">สวีเดน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="119">สหพันธ์สาธารณรัฐโซมาเลีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="54">สหพันธ์สาธารณรัฐไนจีเรีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="52">สหพันธ์สาธารณรัฐบราซิล</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="14">สหพันธ์สาธารณรัฐประชาธิปไตยเนปาล</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="68">สหพันธรัฐรัสเซีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="137">สหภาพคอโมโรส</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="69">สหรัฐเม็กซิโก</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="04">สหรัฐอเมริกา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="67">สหสาธารณรัฐแทนซาเนีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="134">สาธารณรัฐกัวเตมาลา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="138">สาธารณรัฐกินี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="07">สาธารณรัฐเกาหลี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="97">สาธารณรัฐโกตดิวัวร์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="133">สาธารณรัฐคองโก</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="129">สาธารณรัฐคอซอวอ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="80">สาธารณรัฐคอสตาริกา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="83">สาธารณรัฐคาซัคสถาน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="127">สาธารณรัฐคีร์กีซ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="72">สาธารณรัฐเคนยา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="64">สาธารณรัฐโครเอเชีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="108">สาธารณรัฐโคลอมเบีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="128">สาธารณรัฐจอร์เจีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="123">สาธารณรัฐเช็ก</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="109">สาธารณรัฐซิมบับเว</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="92">สาธารณรัฐซูดาน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="86">สาธารณรัฐเซเนกัล</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="100">สาธารณรัฐเซอร์เบีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="140">สาธารณรัฐเซียร์ราลีโอน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="84">สาธารณรัฐแซมเบีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="110">สาธารณรัฐโดมินิกัน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="120">สาธารณรัฐตูนิเซีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="136">สาธารณรัฐทาจิกิสถาน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="101">สาธารณรัฐนามิเบีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="115">สาธารณรัฐนิการากัว</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="94">สาธารณรัฐบัลแกเรีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="126">สาธารณรัฐบูรพาอุรุกวัย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="02">สาธารณรัฐประชาชนจีน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="11">สาธารณรัฐประชาชนบังคลาเทศ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="104">สาธารณรัฐประชาธิปไตยติมอร์-เลสเต</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="132">สาธารณรัฐประชาธิปไตยประชาชนเกาหลี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="08">สาธารณรัฐประชาธิปไตยประชาชนลาว</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="111">สาธารณรัฐประชาธิปไตยประชาชนแอลจีเรีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="102">สาธารณรัฐปานามา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="124">สาธารณรัฐเปรู</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="105">สาธารณรัฐโปรตุเกส</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="65">สาธารณรัฐโปแลนด์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="118">สาธารณรัฐฟิจิ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="12">สาธารณรัฐฟิลิปปินส์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="96">สาธารณรัฐมอนเตเนโกร</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="74">สาธารณรัฐมอลโดวา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="125">สาธารณรัฐมาซิโดเนีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="122">สาธารณรัฐมาดากัสการ์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="117">สาธารณรัฐมาลาวี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="114">สาธารณรัฐโมซัมบิก</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="79">สาธารณรัฐยูกันดา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="106">สาธารณรัฐรวันดา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="93">สาธารณรัฐลิทัวเนีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="103">สาธารณรัฐไลบีเรีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="113">สาธารณรัฐเวเนซุเอลา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="78">สาธารณรัฐสโลวัก</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="51">สาธารณรัฐสโลวีเนีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="09">สาธารณรัฐสังคมนิยมเวียดนาม</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="10">สาธารณรัฐแห่งสหภาพเมียนมา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="98">สาธารณรัฐอาร์เจนตินา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="112">สาธารณรัฐอาหรับซีเรีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="13">สาธารณรัฐอินโดนีเซีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="82">สาธารณรัฐอิรัก</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="40">สาธารณรัฐอิสลามอิหร่าน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="142">สาธารณรัฐอุซเบกิสถาน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="143">สาธารณรัฐเอกวาดอร์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="139">สาธารณรัฐเอลซัลวาดอร์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="95">สาธารณรัฐเอสโตเนีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="121">สาธารณรัฐฮอนดูรัส</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="29">สิงคโปร์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="130">หมู่เกาะโซโลมอน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="15">ออสเตรเลีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="38">ออสเตรีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="05">อังกฤษ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="55">อัลบาเนีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="34">อิตาลี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="27">อินเดีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="33">อียิปต์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="50">เอธิโอเปีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="61">เอริเทรีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="60">แอฟริกาใต้</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="45">ไอซแลนด์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="75">ไอร์แลนด์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="39">ฮ่องกง</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="88">ฮังการี</OPTION>
+									
+								
+								</select>
+                              <TD WIDTH=70>จังหวัด</TD>
+                              <TD class="fldInput">
+								<select  name="Province" onchange="validProvince()">
+								
+									
+									
+									<OPTION VALUE="81">กระบี่</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="10">กรุงเทพมหานคร</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="71">กาญจนบุรี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="46">กาฬสินธุ์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="62">กำแพงเพชร</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="40">ขอนแก่น</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="22">จันทบุรี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="24">ฉะเชิงเทรา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="20">ชลบุรี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="18">ชัยนาท</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="36">ชัยภูมิ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="86">ชุมพร</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="57">เชียงราย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="50">เชียงใหม่</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="92">ตรัง</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="23">ตราด</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="63">ตาก</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="99">ต่างประเทศ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="26">นครนายก</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="73">นครปฐม</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="48">นครพนม</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="30">นครราชสีมา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="80">นครศรีธรรมราช</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="60">นครสวรรค์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="12">นนทบุรี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="96">นราธิวาส</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="55">น่าน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="38">บึงกาฬ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="31">บุรีรัมย์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="13">ปทุมธานี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="77">ประจวบคีรีขันธ์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="25">ปราจีนบุรี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="94">ปัตตานี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="14">พระนครศรีอยุธยา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="56">พะเยา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="82">พังงา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="93">พัทลุง</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="66">พิจิตร</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="65">พิษณุโลก</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="76">เพชรบุรี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="67">เพชรบูรณ์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="54">แพร่</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="83">ภูเก็ต</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="44">มหาสารคาม</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="49">มุกดาหาร</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="58">แม่ฮ่องสอน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="35">ยโสธร</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="95">ยะลา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="45">ร้อยเอ็ด</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="85">ระนอง</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="21" selected="selected">ระยอง</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="70">ราชบุรี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="16">ลพบุรี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="52">ลำปาง</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="51">ลำพูน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="42">เลย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="33">ศรีสะเกษ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="47">สกลนคร</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="90">สงขลา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="91">สตูล</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="11">สมุทรปราการ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="75">สมุทรสงคราม</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="74">สมุทรสาคร</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="27">สระแก้ว</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="19">สระบุรี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="17">สิงห์บุรี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="64">สุโขทัย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="72">สุพรรณบุรี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="84">สุราษฎร์ธานี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="32">สุรินทร์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="43">หนองคาย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="39">หนองบัวลำภู</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="15">อ่างทอง</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="37">อำนาจเจริญ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="41">อุดรธานี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="53">อุตรดิตถ์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="61">อุทัยธานี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="34">อุบลราชธานี</OPTION>
+									
+								
+								</select>
+								</TD>
+							</TR>
+	                          <TR>
+                              <TD WIDTH=10></TD>
+                              <TD WIDTH=135>ศาสนา</TD>
+                              <TD class="fldInput">
+								<select  name="Religion">
+								
+									
+									
+									<OPTION VALUE="00">ไม่ได้บันทึกศาสนา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="01" selected="selected">พุทธ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="02">คริสต์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="03">อิสลาม</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="04">ฮินดู</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="05">ซิกข์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="06">บาไฮ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="09">ไม่นับถือศาสนาใด ๆ</OPTION>
+									
+								
+								</select>
+                              	<INPUT TYPE="hidden" NAME="Race" VALUE="" SIZE="2" MAXLENGTH="2" >
+							</TD>
+                              <TD WIDTH=70>สัญชาติ</TD>
+                              <TD class="fldInput">
+                              	<INPUT TYPE="text" NAME="NationDesc" VALUE="ไทย" SIZE="15" MAXLENGTH="40" readonly="readonly">
+                              	<INPUT TYPE="hidden" NAME="Nation" VALUE="01" SIZE="2" MAXLENGTH="2" >
+                              </TD>
+                              
+							  </TR>
+							  <TR>
+                              <TD WIDTH=10></TD>
+                              <TD WIDTH=135>เชื้อชาติ</TD>
+                              <TD class="fldInput">
+								<select  name="RaceCode">
+								
+									
+									
+									<OPTION VALUE="144"> </OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="36">กรีก</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="23">กัมพูชา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="134">กัวเตมาลา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="56">กานา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="138">กินี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="07">เกาหลี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="132">เกาหลี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="97">โกตดิวัวร์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="133">คองโก</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="129">คอซอวอ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="137">คอโมเรียน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="80">คอสตาริกา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="83">คาซัค</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="06">คานาดา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="127">คีร์กีซ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="73">คูเวต</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="72">เคนยา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="21">แคเมอร์รูน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="64">โครเอเชีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="108">โคลอมเบีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="128">จอร์เจีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="131">จอร์แดน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="02">จีน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="130">ชาวเกาะโซโลมอน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="90">ชิลี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="123">เช็ก</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="41">ซาอุดิอารเบีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="109">ซิมบับเว</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="112">ซีเรีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="92">ซูดาน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="86">เซเนกัล</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="100">เซอร์เบีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="135">เซาท์ซูดาน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="140">เซียร์ราลีโอน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="84">แซมเบีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="119">โซมาลี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="03">ญี่ปุ่น</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="16">ดัชท์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="30">เดนมาร์ค</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="110">โดมินิกัน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="141">ตองกา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="104">ติมอร์-เลสเต</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="28">ตุรกี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="120">ตูนิเซีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="25">ไต้หวัน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="136">ทาจิก</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="67">แทนซาเนีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="01" selected="selected">ไทย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="31">นอร์เวย์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="101">นามิเบีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="115">นิการากัว</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="22">นิวซีแลนด์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="14">เนปาล</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="54">ไนจีเรีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="52">บราซิล</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="46">บรูไน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="49">บอตสวานา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="66">บอสเนียและเฮอร์เซโกวีนา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="11">บังคลาเทศ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="94">บัลแกเรีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="48">บาห์เรน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="42">เบลเยี่ยม</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="70">เบลีซ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="24">เบอร์นิน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="58">ปากีสถาน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="102">ปานามา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="107">ปาปัวนิวกินี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="63">ปาเลสไตน์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="124">เปรู</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="105">โปรตุเกส</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="65">โปแลนด์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="20">ฝรั่งเศส</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="10">พม่า</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="118">ฟิจิ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="26">ฟินแลนด์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="12">ฟิลิปปินส์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="53">ภูฏาน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="32">มองโกเลีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="96">มอนเตเนโกร</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="74">มอลโดวา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="62">มัลดีฟส์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="125">มาซิโดเนีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="122">มาลากาซี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="117">มาลาวี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="43">มาเลเซีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="69">เม็กซิโก</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="114">โมซัมบิก</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="77">โมร็อกโก</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="00">ไม่ระบุเชื้อชาติ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="79">ยูกันดา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="57">ยูโกสลาเวีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="37">เยอรมัน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="106">รวันดา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="68">รัสเซีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="71">โรมาเนีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="87">ลักเซมเบิร์ก</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="85">ลัตเวีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="08">ลาว</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="93">ลิทัวเนีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="89">ลิเบีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="59">เลบานอน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="103">ไลบีเรีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="113">เวเนซุเอลา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="09">เวียดนาม</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="17">ศรีลังกา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="47">สกอต</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="18">สเปน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="78">สโลวัก</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="51">สโลวีน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="116">สวาซี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="19">สวิสเซอร์แลนด์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="44">สวีเดน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="29">สิงคโปร์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="04">อเมริกัน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="76">อเมริกัน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="15">ออสเตรเลีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="38">ออสเตรีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="05">อังกฤษ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="81">อัฟกัน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="55">อัลบาเนีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="98">อาร์เจนตินา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="34">อิตาลี</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="27">อินเดีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="13">อินโดนีเซีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="82">อิรัก</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="35">อิสราเอล</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="40">อิหร่าน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="33">อียิปต์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="142">อุซเบก</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="126">อุรุกวัย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="143">เอกวาดอร์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="50">เอธิโอเปีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="61">เอริเทรีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="139">เอลซัลวาดอร์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="95">เอสโตเนีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="60">แอฟริกาใต้</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="111">แอลจีเรีย</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="91">โอมาน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="45">ไอซแลนด์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="75">ไอริช</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="121">ฮอนดูรัส</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="88">ฮังการี</OPTION>
+									
+								
+								</select>
+                              	
+							</TD>
+                              <TD WIDTH=100>โทรศัพท์มือถือ</TD>
+                              <TD class="fldInput">
+							 		<INPUT TYPE="TEXT" NAME="MobilePhoneNo" VALUE="0631487898" SIZE="10" MAXLENGTH="10">
+							  </TD>
+                              
+							  </TR>
+                            <TR>
+                              <TD WIDTH=10></TD>
+                              <TD WIDTH=135>ชื่อบิดา</TD>
+                              <TD class="fldInput">
+								  <INPUT TYPE="TEXT" NAME="FatherName" VALUE="ลำพุง" SIZE="25" MAXLENGTH="35">
+							  </TD>
+							  <TD WIDTH=70>นามสกุล</TD>
+                              <TD class="fldInput">
+								<INPUT TYPE="TEXT" NAME="FatherSurName" VALUE="สีเขียว" SIZE="25" MAXLENGTH="45">
+							  </TD>
+							  
+                            </TR>
+                             
+                              <TR>
+                              <TD WIDTH=10></TD>
+                              <TD WIDTH=170 >เลขประจำตัวประชาชนบิดา</TD>
+                              <TD COLSPAN=2 class="fldInput">
+							 		<INPUT TYPE="TEXT" NAME="IdCardFather" VALUE="3320200247745" SIZE="13" MAXLENGTH="13">
+								</TD>
+          	                  <TR>
+          	                
+                            <TR>
+                              <TD WIDTH=10></TD>
+                              <TD WIDTH=135>ชื่อมารดา</TD>
+                              <TD class="fldInput">
+								<INPUT TYPE="TEXT" NAME="MatherName" VALUE="วิไลพร" SIZE="25" MAXLENGTH="35">
+							  </TD>
+							  <TD WIDTH=70>นามสกุล</TD>
+                              <TD class="fldInput">
+								<INPUT TYPE="TEXT" NAME="MatherSurName" VALUE="สีเขียว" SIZE="25" MAXLENGTH="45">
+							  </TD>
+                            </TR>
+                             
+                              <TR>
+                              <TD WIDTH=10></TD>
+                              <TD WIDTH=170>เลขประจำตัวประชาชนมารดา</TD>
+                              <TD COLSPAN=2 class="fldInput">
+							 		<INPUT TYPE="TEXT" NAME="IdCardMother" VALUE="3301700991088" SIZE="13" MAXLENGTH="13">
+								</TD>
+          	                  <TR>
+          	                
+          	                 
+                              <TR>
+                              <TD WIDTH=10></TD>
+                              <TD WIDTH=135>ผู้ปกครอง</TD>
+                              <!--
+                              <TD colspan=2 class="fldInput">
+		                    					<INPUT TYPE="radio" onClick="guardianCheck()" NAME="Guardian" VALUE="1"> บิดา
+		                    					<INPUT TYPE="radio" onClick="guardianCheck()" NAME="Guardian" VALUE="2"> มารดา
+		                    					<INPUT TYPE="radio" onClick="otherCheck()" NAME="Guardian" VALUE="3" > อื่นๆ  (โปรดระบุ)
+							  </TD> 
+							  -->
+							  <TD >มีความเกี่ยวข้องเป็น</TD>
+							  <TD colspan=2 class="fldInput">
+								<select  name="GuardianRelation" onchange="guardianRelationCheck()">
+								
+									
+									
+									<OPTION VALUE="0">อื่นๆ  </OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="1" selected="selected">บิดา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="2">มารดา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="3">ญาติ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="4">ตนเอง</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="5">ผู้อุปถัมภ์</OPTION>
+									
+								
+								</select>
+                             </TD>
+                             
+    	                      <TR>
+                              <TD WIDTH=10></TD>
+                              <TD WIDTH=135 ALIGN=Right>ชื่อ</TD>
+                              <TD class="fldInput">
+									<INPUT TYPE="TEXT" NAME="GuardianName" VALUE="ลำพุง" SIZE="25" MAXLENGTH="35">
+							  </TD>
+							  <TD WIDTH=70>นามสกุล</TD>
+							  <TD class="fldInput">
+								<INPUT TYPE="TEXT" NAME="GuardianSurName" VALUE="สีเขียว" SIZE="25" MAXLENGTH="45">
+							  </TD>
+      	                    </TR>
+      	                      
+                              <TR>
+                              <TD WIDTH=10></TD>
+                              <TD WIDTH=205 >เลขประจำตัวประชาชนผู้ปกครอง</TD>
+                              <TD COLSPAN=2 class="fldInput">
+							 		<INPUT TYPE="TEXT" NAME="IdCardGuardian" VALUE="3320200247745" SIZE="13" MAXLENGTH="13">
+								</TD>
+          	                  <TR>
+          	                
+							
+							  <TR>
+                              <TD WIDTH=10></TD>
+                              <TD WIDTH=135>ผู้ค้ำประกัน</TD>
+                              <TD COLSPAN=3 class="fldInput">
+		                    					<INPUT TYPE="radio"  onClick="guarantorCheck()" NAME="Guarantor" VALUE="1"> บิดา
+		                    					<INPUT TYPE="radio"  onClick="guarantorCheck()" NAME="Guarantor" VALUE="2"> มารดา
+		                    					<INPUT TYPE="radio"  onClick="guarantorCheck()" NAME="Guarantor" VALUE="3">ผู้ปกครอง
+		                    					<INPUT TYPE="radio"  onClick="otherCheck()" NAME="Guarantor" VALUE="4" > อื่นๆ  (โปรดระบุ)
+							</TD> 
+                            </TR> 
+        	                  
+        	                  <TR>
+                              <TD WIDTH=10></TD>
+                              <TD WIDTH=135 ALIGN=Right>ชื่อ</TD>
+                              <TD class="fldInput">
+									<INPUT TYPE="TEXT" NAME="GuarantorName" VALUE="ลำพุง" SIZE="25" MAXLENGTH="35">
+							  </TD>
+							  <TD WIDTH=70>นามสกุล</TD>
+							  <TD class="fldInput">
+								<INPUT TYPE="TEXT" NAME="GuarantorSurName" VALUE="สีเขียว" SIZE="25" MAXLENGTH="45">
+							  </TD>
+      	                    </TR>
+							
+        	                  <TR>
+                              <TD WIDTH=10></TD>
+                              <TD WIDTH=135>อีเมลนิสิต</TD>
+                              <TD COLSPAN=3 class="fldInput">
+							 		<INPUT TYPE="TEXT" NAME="email" VALUE="Theerut.seek@gmail.com" SIZE="40" MAXLENGTH="50">
+								</TD>
+          	                <TR>
+                              <TD WIDTH=10></TD>
+                              <TD WIDTH=135>ความพิการ</TD>
+                              <TD class="fldInput">
+							<select  name="Deform">
+								
+									
+									
+									<OPTION VALUE="00" selected="selected">ไม่พิการ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="01">ความบกพร่องทางการเห็น</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="02">ความบกพร่องทางการได้ยิน</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="03">ความบกพร่องทางสติปัญญา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="04">ความบกพร่องทางร่างกายหรือสุขภาพ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="05">มีปัญหาทางการเรียนรู้</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="06">ความบกพร่องทางการพูดและภาษา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="07">มีปัญหาทางพฤติกรรม หรืออารมณ์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="08">ออทิสติก</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="09">บุคคลพิการซ้อน</OPTION>
+									
+								
+							</select>
+							</TD>
+							 <TD WIDTH=135 >สถานภาพ</TD>
+                              <TD class="fldInput">
+							<select  name="MaritalStatus">
+								
+									
+									
+									<OPTION VALUE="01" selected="selected">โสด</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="02">สมรส</OPTION>
+									
+								
+							</select>
+							</TD>
+							
+							</TR>
+							<TR>
+							  <TD WIDTH=10></TD>
+                              <TD WIDTH=135>หมู่เลือด</TD>
+                              <TD class="fldInput">
+							<select  name="BloodGroup">
+								
+									
+									
+									<OPTION VALUE="">ไม่ระบุ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="A">A</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="AB">AB</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="B" selected="selected">B</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="O">O</OPTION>
+									
+								
+							</select>
+							</TD>
+							</TR>
+							<TR>
+        	                  
+                              <TD WIDTH=10></TD>
+                              <TD WIDTH=135>ความสามารถพิเศษ</TD>
+                              <TD class="fldInput">
+							  <select  name="TalentCode">
+								
+									
+									
+									<OPTION VALUE="09"> </OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="06">ด้านนาฎศิลป/ดนตรีขับร้อง</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="05">ด้านกีฬา</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="04">ด้านศิลปะ </OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="03">ด้านกิจกรรมสันทนาการ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="02" selected="selected">ด้านการใช้คอมพิวเตอร์</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="01">ด้านภาษาต่างประเทศ</OPTION>
+									
+								
+									
+									
+									<OPTION VALUE="00">อื่นๆ</OPTION>
+									
+								
+							  </select>
+							  </TD>
+                              <TD COLSPAN=2 class="fldInput"><INPUT TYPE="TEXT" NAME="Talent" VALUE="" SIZE="40" MAXLENGTH="50">
+							  </TD>
+          	                </TR>
+          	                
+                            <TR>
+                              <TD COLSPAN=5 HEIGHT=15>
+                                   
+									<INPUT TYPE="hidden" NAME="Status"    VALUE="1">
+									<INPUT TYPE="hidden" NAME="lang"    VALUE="T">
+									<INPUT TYPE="hidden" NAME="studentcode"   VALUE="6332022621">
+									<INPUT TYPE="hidden" NAME="AdmType"    	VALUE="B">
+									<INPUT TYPE="hidden" NAME="ProfileStatus"   VALUE="C">
+									<INPUT TYPE="hidden" NAME="submitType"    VALUE="U">
+									<INPUT TYPE="hidden" NAME="printStatus"    VALUE="N">
+								</TD>
+                            </TR>
+                          </TABLE>
+                        </TD>
+			                </TR>
+				            </TABLE>
+					        </TD>
+						    </TR>
+							</TABLE>
+            </TD>
+	        </TR>
+		    </TABLE>
+			</TD>
+			<TD></TD>
+    </TR>
+	  <TR VALIGN="Top" ALIGN="Left">
+	   
+	   <TD COLSPAN="2" ALIGN="RIGHT">
+	       
+	        <INPUT TYPE="submit" NAME="FormsButton0" value="พิมพ์"    onClick=" setPrint() " > 
+	      
+	      
+	   </TD>
+      <TD COLSPAN="5" ALIGN="Center">
+      	<TABLE ID="Table39" BORDER="0" CELLSPACING="1" CELLPADDING="1">
+					<TR>
+					  <TD ALIGN=LEFT><INPUT TYPE="submit" NAME="FormsButton1" value="หน้าถัดไป"></TD>
+					</TR>
+				</TABLE>
+			</TD>
+	   
+	  </TR>   
+	</TABLE>
+</FORM>
+<script type='text/javascript' language="JavaScript1.2">
+document.ProfileForm.IdCard.focus();
+if (document.ProfileForm.Nation.value != "01") {
+	document.all("cardlabel").innerText = 'เลขที่หนังสือเดินทาง';
+    if 	(document.ProfileForm.IDay.value == "00")
+	document.ProfileForm.IDay.value = "";
+    if 	(document.ProfileForm.IMon.value == "00")
+	document.ProfileForm.IMon.value = "";
+	if 	(document.ProfileForm.EDay.value == "00")
+	document.ProfileForm.EDay.value = "";
+    if 	(document.ProfileForm.EMon.value == "00")
+	document.ProfileForm.EMon.value = "";
+}
+if 	(document.ProfileForm.BDay.value == "00")
+	document.ProfileForm.BDay.value = "";
+if 	(document.ProfileForm.BMon.value == "00")
+	document.ProfileForm.BMon.value = "";
+validCountry();	
+</script>
+</BODY>
+</HTML>
+

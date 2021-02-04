@@ -1,0 +1,50 @@
+#include<bits/stdc++.h>
+using namespace std;
+const int N = 1e5+5;
+long long seq[N];
+int cnt;
+vector< int > g[N][2];
+void dfs1(int u,int pa = 0)
+{
+    for(auto &x:g[u])
+    {
+        if(x[1]==pa)   continue;
+        dfs1(x,u);
+        g[u][0] = max(g[u][0],g[x][0]);
+    }
+}
+void dfs2(int u,int pa = 0)
+{
+    sort(g[u].begin(),g[u].end());
+    for(auto &x:g[u])
+    {
+        if(x==pa)   continue;
+        dfs2(x,u);
+    }
+    seq[++cnt] = u;
+}
+int main()
+{
+    int n,m;
+    scanf("%d %d",&n,&m);
+    for(int i=1;i<=n;i++)
+    {
+        int pa;
+        scanf("%d",&pa);
+        if(!pa) root = i;
+        else    g[pa].push_back({i,i});
+    }
+    dfs1(root);
+    dfs2(root);
+    for(int i=1;i<=n;i++)   seq[i]+=seq[i-1];
+    int cur = 0;
+    for(int i=1;i<=m;i++)
+    {
+        int cmd,x;
+        scanf("%d",&cmd);
+        if(cmd==1)      scanf("%d",&x),cur+=x;
+        else if(cmd==2) scanf("%d",&x),cur-=x;
+        else            print(seq[cur]);
+    }
+    return 0;
+}

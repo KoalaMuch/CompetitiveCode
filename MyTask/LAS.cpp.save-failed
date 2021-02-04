@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+using namespace std;
+vector< int > g[100005];
+int main()
+{
+    int n,ans=0;
+    scanf("%d",&n);
+    for(int i=1;i<=n;i++)
+    {
+        scanf("%d",&a);
+        g[a].push_back(i);
+    }
+    for(int i=1;i<=n;i++)
+    {
+        int nowpos = 0;
+        for(int j=1;j<=n;j++)
+        {
+            if(j*i>100000)  break;
+            nowpos = upper_bound(g[j*i].begin(),g[j*i].end(),nowpos);
+            if(nowpos==g[j*i].end())    break;
+            ans = max(ans,j);
+        }
+    }
+    printf("%d\n",ans);
+    return 0;
+}
